@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!--*******************************************************************************
+     * This XML-based configuration ensures the application adheres to a 
+     * descriptor-driven deployment approach, avoiding the use of code annotations 
+     * and maintaining compatibility with traditional Jakarta EE standards.
+     * 
+     * @see web.xml
+     * @since Java 21.0.7
+     * @author Annabel Cheng
+     * @version 1.0
+     * Course: CST8288 Lab013 Assignment 2
+     * Description: Deployment details for the servlets must be specified via web.xml 
+     *                                 (not using code annotations).
+     * 
+     *****************************************************************************-->
+
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <!-- 
+        Session Configuration:
+        Defines session timeout for all user sessions in the web application.
+        Value is in minutes.
+    -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- 
+        Login Servlet Configuration:
+        Maps LoginServlet class to the URL pattern "/login".
+        This servlet handles user authentication requests.
+    -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>viewlayer.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <!-- 
+        Front Controller Configuration:
+        Maps FrontController class to "/frontController".
+        Used for centralized request handling and navigation control.
+    -->
+    <servlet>
+        <servlet-name>FrontController</servlet-name>
+        <servlet-class>viewlayer.FrontController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FrontController</servlet-name>
+        <url-pattern>/frontController</url-pattern>
+    </servlet-mapping>
+
+    <!-- 
+        Welcome File List:
+        Specifies the default page when the application root is accessed.
+        Here, index.html acts as the welcome file.
+    -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+</web-app>
+
